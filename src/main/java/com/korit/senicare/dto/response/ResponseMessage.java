@@ -12,9 +12,10 @@ public interface ResponseMessage {
     String DUPLICATED_TEL_NUMBER="Duplicated user telnumper.";
 
     String TEL_AUTH_FAIL="Tel number auth failed.";
-    
-    String MESSAGE_SEND_FAIL ="Auth number send failed.";
+    String SIGN_IN_FAIL="Sign in failed.";
 
+    String MESSAGE_SEND_FAIL ="Auth number send failed.";
+    String TOKEN_CREATE_FAIL = "Token creation failed.";
     String DATABASE_ERROR = "Database error.";
 
 }

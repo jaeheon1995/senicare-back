@@ -136,10 +136,13 @@ public class AuthServiceImplement implements AuthService {
 
         try {
             NurseEntity nurseEntity = nurseRepository.findByUserId(userId);
+            
             if(nurseEntity == null) return ResponseDto.signInFail();
             String encodedPassword =nurseEntity.getPassword();
+            
             boolean isMatched = passwordEncoder.matches(password, encodedPassword);
             if(!isMatched) return ResponseDto.signInFail();
+            
             accessToken = jwtProvider.create(userId);
             if(accessToken == null) return ResponseDto.tokenCreateFail();
 

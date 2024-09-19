@@ -9,10 +9,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class SignInRequestDto {
-
+    
     @NotBlank
     private String userId;
     @NotBlank
     private String password;
-    
+
 }

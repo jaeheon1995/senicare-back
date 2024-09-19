@@ -17,4 +17,5 @@ public interface AuthService {
     ResponseEntity<ResponseDto> telAuthCheck(TelAuthCheckRequestDto dto);
     ResponseEntity<ResponseDto> signUp(SignUpRequestDto dto);
     ResponseEntity<? super SignInResponseDto> signIn(SignInRequestDto dto);
-} 
+
+}

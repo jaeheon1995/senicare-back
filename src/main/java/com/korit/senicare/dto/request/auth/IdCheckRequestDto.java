@@ -5,14 +5,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-// id중복확인 request body에 대한 DTO
+// 아이디 중복확인 Request Body DTO
 
 @Getter
 @Setter
 @NoArgsConstructor
 public class IdCheckRequestDto {
-
+    
     @NotBlank
     private String userId;
-    
+
 }

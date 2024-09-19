@@ -17,13 +17,13 @@ import lombok.Setter;
 @Entity(name="careRecords")
 @Table(name="care_records")
 public class CareRecordEntity {
-
+    
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer recordNumber;
     private String recordDate;
-    private String Contents;
-    private Integer usedtool;
+    private String contents;
+    private Integer usedTool;
     private Integer count;
     private String charger;
     private Integer customNumber;

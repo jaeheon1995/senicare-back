@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class SignUpRequestDto {
-
+    
     @NotBlank
     @Length(max=5)
     private String name;
@@ -20,7 +20,7 @@ public class SignUpRequestDto {
     @Length(max=20)
     private String userId;
     @NotBlank
-    @Pattern(regexp="^(?=.*[a-zA-z])(?=.*[0-9]).{8,13}$")
+    @Pattern(regexp="^(?=.*[a-zA-Z])(?=.*[0-9]).{8,13}$")
     private String password;
     @NotBlank
     @Pattern(regexp="^[0-9]{11}$")

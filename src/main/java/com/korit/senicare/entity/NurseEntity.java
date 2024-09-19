@@ -26,13 +26,13 @@ public class NurseEntity {
     private String joinPath;
     private String snsId;
 
-    public NurseEntity(SignUpRequestDto dto){
+    public NurseEntity(SignUpRequestDto dto) {
         this.userId = dto.getUserId();
-        this.password=dto.getPassword();
-        this.name=dto.getName();
-        this.telNumber=dto.getTelNumber();
-        this.joinPath=dto.getJoinPath();
-        this.snsId=dto.getSnsId();
+        this.password = dto.getPassword();
+        this.name = dto.getName();
+        this.telNumber = dto.getTelNumber();
+        this.joinPath = dto.getJoinPath();
+        this.snsId = dto.getSnsId();
     }
 
 }

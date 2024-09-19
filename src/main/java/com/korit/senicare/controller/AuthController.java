@@ -22,14 +22,13 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
 public class AuthController {
-
-    private final AuthService authService;
     
+    private final AuthService authService;
 
     @PostMapping("/id-check")
     public ResponseEntity<ResponseDto> idCheck(
         @RequestBody @Valid IdCheckRequestDto requestBody
-    ){
+    ) {
         ResponseEntity<ResponseDto> response = authService.idCheck(requestBody);
         return response;
     }
@@ -37,7 +36,7 @@ public class AuthController {
     @PostMapping("/tel-auth")
     public ResponseEntity<ResponseDto> telAuth(
         @RequestBody @Valid TelAuthRequestDto requestBody
-    ){
+    ) {
         ResponseEntity<ResponseDto> response = authService.telAuth(requestBody);
         return response;
     }
@@ -45,7 +44,7 @@ public class AuthController {
     @PostMapping("/tel-auth-check")
     public ResponseEntity<ResponseDto> telAuthCheck(
         @RequestBody @Valid TelAuthCheckRequestDto requestBody
-    ){
+    ) {
         ResponseEntity<ResponseDto> response = authService.telAuthCheck(requestBody);
         return response;
     }
@@ -53,16 +52,17 @@ public class AuthController {
     @PostMapping("/sign-up")
     public ResponseEntity<ResponseDto> signUp(
         @RequestBody @Valid SignUpRequestDto requestBody
-    ){
+    ) {
         ResponseEntity<ResponseDto> response = authService.signUp(requestBody);
         return response;
-    }
+    } 
 
     @PostMapping("/sign-in")
     public ResponseEntity<? super SignInResponseDto> signIn(
         @RequestBody @Valid SignInRequestDto requestBody
-    ){
+    ) {
         ResponseEntity<? super SignInResponseDto> response = authService.signIn(requestBody);
         return response;
     }
+
 }

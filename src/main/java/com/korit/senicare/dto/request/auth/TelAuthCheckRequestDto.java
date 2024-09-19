@@ -9,9 +9,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class TelAuthCheckRequestDto {
-
+    
     @NotBlank
     private String telNumber;
     @NotBlank
     private String authNumber;
+
 }

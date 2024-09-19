@@ -17,7 +17,7 @@ import lombok.Setter;
 @Entity(name="customers")
 @Table(name="customers")
 public class CustomerEntity {
-
+    
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer customerNumber;
@@ -27,4 +27,5 @@ public class CustomerEntity {
     private String charger;
     private String address;
     private String location;
+
 }

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.korit.senicare.entity.ToolEntity;
 
 @Repository
-public interface ToolRepository extends JpaRepository<ToolEntity,Integer>{
+public interface ToolRepository extends JpaRepository<ToolEntity, Integer> {
     
 }

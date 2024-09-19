@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class TelAuthRequestDto {
-
+    
     @NotBlank
     @Pattern(regexp="^[0-9]{11}$")
     private String telNumber;

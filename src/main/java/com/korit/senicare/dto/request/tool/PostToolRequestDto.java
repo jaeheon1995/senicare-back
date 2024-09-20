@@ -2,7 +2,6 @@ package com.korit.senicare.dto.request.tool;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,5 +17,6 @@ public class PostToolRequestDto {
     private String purpose;
     @NotNull
     private Integer count;
+
     
 }

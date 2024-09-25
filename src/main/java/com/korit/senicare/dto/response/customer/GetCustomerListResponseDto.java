@@ -9,7 +9,7 @@ import com.korit.senicare.common.object.Customer;
 import com.korit.senicare.dto.response.ResponseCode;
 import com.korit.senicare.dto.response.ResponseDto;
 import com.korit.senicare.dto.response.ResponseMessage;
-import com.korit.senicare.repository.resultSet.GetCustomerResultSet;
+import com.korit.senicare.repository.resultSet.GetCustomersResultSet;
 
 import lombok.Getter;
 
@@ -18,12 +18,12 @@ public class GetCustomerListResponseDto extends ResponseDto {
 
     private List<Customer> customers;
 
-    private GetCustomerListResponseDto (List<GetCustomerResultSet> resultSets) {
+    private GetCustomerListResponseDto (List<GetCustomersResultSet> resultSets) {
         super(ResponseCode.SUCCCESS, ResponseMessage.SUCCESS);
         this.customers = Customer.getList(resultSets);
     }
 
-    public static ResponseEntity<GetCustomerListResponseDto> success(List<GetCustomerResultSet> resultSets) {
+    public static ResponseEntity<GetCustomerListResponseDto> success(List<GetCustomersResultSet> resultSets) {
         GetCustomerListResponseDto responseBody = new GetCustomerListResponseDto(resultSets);
         return ResponseEntity.status(HttpStatus.OK).body(responseBody);
     }

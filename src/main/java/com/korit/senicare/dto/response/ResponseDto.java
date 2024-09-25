@@ -45,6 +45,11 @@ public class ResponseDto {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseBody);
     }
 
+    public static ResponseEntity<ResponseDto> noExistCustomer() {
+        ResponseDto responseBody = new ResponseDto(ResponseCode.NO_EXIST_CUSTOMER, ResponseMessage.NO_EXIST_CUSTOMER);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseBody);
+    }
+
     public static ResponseEntity<ResponseDto> telAuthFail() {
         ResponseDto responseBody = new ResponseDto(ResponseCode.TEL_AUTH_FAIL, ResponseMessage.TEL_AUTH_FAIL);
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(responseBody);
@@ -53,6 +58,11 @@ public class ResponseDto {
     public static ResponseEntity<ResponseDto> signInFail() {
         ResponseDto responseBody = new ResponseDto(ResponseCode.SIGN_IN_FAIL, ResponseMessage.SIGN_IN_FAIL);
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(responseBody);
+    }
+
+    public static ResponseEntity<ResponseDto> noPermission() {
+        ResponseDto responseBody = new ResponseDto(ResponseCode.NO_PERMISSION, ResponseMessage.NO_PERMISSION);
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(responseBody);
     }
 
     public static ResponseEntity<ResponseDto> messageSendFail() {

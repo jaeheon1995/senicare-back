@@ -1,13 +1,18 @@
 package com.korit.senicare.service.implement;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.korit.senicare.dto.request.customer.PostCustomerRequestDto;
 import com.korit.senicare.dto.response.ResponseDto;
+import com.korit.senicare.dto.response.customer.GetCustomerListResponseDto;
 import com.korit.senicare.entity.CustomerEntity;
 import com.korit.senicare.repository.CustomerRepository;
 import com.korit.senicare.repository.NurseRepository;
+import com.korit.senicare.repository.resultSet.GetCustomerResultSet;
 import com.korit.senicare.service.CustomerService;
 
 import lombok.RequiredArgsConstructor;
@@ -37,6 +42,24 @@ public class CustomerServiceImplement implements CustomerService {
         }
 
         return ResponseDto.success();
+
+    }
+
+    @Override
+    public ResponseEntity<? super GetCustomerListResponseDto> getCustomerList() {
+        
+        List<GetCustomerResultSet> resultSets = new ArrayList<>();
+
+        try {
+            
+            resultSets = customerRepository.getCustomers();
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return ResponseDto.databaseError();
+        }
+
+        return GetCustomerListResponseDto.success(resultSets);
 
     }
     

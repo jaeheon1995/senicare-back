@@ -10,6 +10,7 @@ import com.korit.senicare.dto.request.customer.PatchCustomerRequestDto;
 import com.korit.senicare.dto.request.customer.PostCareRecordRequestDto;
 import com.korit.senicare.dto.request.customer.PostCustomerRequestDto;
 import com.korit.senicare.dto.response.ResponseDto;
+import com.korit.senicare.dto.response.customer.GetCareRecordListResponseDto;
 import com.korit.senicare.dto.response.customer.GetCustomerListResponseDto;
 import com.korit.senicare.dto.response.customer.GetCustomerResponseDto;
 import com.korit.senicare.entity.CareRecordEntity;
@@ -153,15 +154,17 @@ public class CustomerServiceImplement implements CustomerService {
         
         try {
 
+            ToolEntity toolEntity = null;
             String usedToolName = null;
 
             Integer usedToolNumber = dto.getUsedToolNumber();
+            Integer usedCount = dto.getCount();
+
             if (usedToolNumber != null) {
-                ToolEntity toolEntity = toolRepository.findByToolNumber(usedToolNumber);
+                toolEntity = toolRepository.findByToolNumber(usedToolNumber);
                 if (toolEntity == null) return ResponseDto.noExistTool();
                 
                 Integer count = toolEntity.getCount();
-                Integer usedCount = dto.getCount();
                 if (usedCount > count) return ResponseDto.toolInsufficient();
             
                 usedToolName = toolEntity.getName();
@@ -171,7 +174,8 @@ public class CustomerServiceImplement implements CustomerService {
             careRecordRepository.save(careRecordEntity);
 
             if (usedToolNumber != null) {
-                
+                toolEntity.decreaseCount(usedCount);
+                toolRepository.save(toolEntity);
             }
 
         } catch (Exception exception) {
@@ -181,6 +185,24 @@ public class CustomerServiceImplement implements CustomerService {
 
         return ResponseDto.success();
         
+    }
+
+    @Override
+    public ResponseEntity<? super GetCareRecordListResponseDto> getCareRecordList(Integer customerNumber) {
+        
+        List<CareRecordEntity> careRecordEntities = new ArrayList<>();
+
+        try {
+
+            careRecordEntities = careRecordRepository.findByCustomerNumberOrderByRecordNumberDesc(customerNumber);
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return ResponseDto.databaseError();
+        }
+
+        return GetCareRecordListResponseDto.success(careRecordEntities);
+
     }
     
 }
